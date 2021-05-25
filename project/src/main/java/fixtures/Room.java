@@ -1,5 +1,7 @@
 package fixtures;
 
+import java.util.Arrays;
+
 public class Room extends Fixtures{
 	private Room[] exits;
 
@@ -20,14 +22,26 @@ public class Room extends Fixtures{
 		return this.exits;
 	}
 		
-	
+	public void setExits(Room[] exits) {
+		this.exits=exits;
+	}
 	public Room getExit(String direction) {
 		switch(direction) {
 		case "north":
-			return this.exits[1];
+			return this.exits[0];
 		default:
 			return null;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "Room [name="
+				+super.getName()
+				+",shortDesc="
+				+super.getShortDescription()
+				+"longDesc="+super.getLongDescription()
+				+"exits" + Arrays.toString(exits) + "]";
 	}
 	
 	

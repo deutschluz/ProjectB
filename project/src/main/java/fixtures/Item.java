@@ -1,5 +1,5 @@
 package fixtures;
 
-public class Item {
+public class Item extends Fixtures{
 
 }
