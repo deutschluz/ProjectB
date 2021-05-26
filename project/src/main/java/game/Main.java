@@ -11,10 +11,11 @@ public class Main {
 		Room startingRoom= roomManager.getStartingRoom();
 		Player p1= new Player(startingRoom);
 		String inp=" "; //player input
+		//print starting room
+				UserPrompt(p1.getCurrentRoom().toString());
 		do {
 		//main Game loop
-			//print current room
-		System.out.println(p1.getCurrentRoom().toString());
+			
 			//inform user of available rooms
 		UserPrompt("type commands of the form:\n"
 				+ "go north/south/east/west\n"
@@ -27,7 +28,11 @@ public class Main {
 			//get command
 			inp=parse(inp,p1);
 			//execute player command
-			roomManager.movePlayer(inp,p1);
+			inp=roomManager.movePlayer(inp,p1);
+			if(inp.equals("FAILURE")) {
+				UserPrompt("please choose another direction");
+			}
+			UserPrompt(p1.getCurrentRoom().toString());
 		}
 		
 		}while (inp != "Quit");
@@ -45,6 +50,7 @@ public class Main {
 	public static String parse(String Input, Player p1) {
 		 //expect string of the form "go south"
 		String[] inpArr=Input.split(" ");
+
 		String cmd;
 		if(inpArr[0].equals("Quit")) {
 			return "Quit";
@@ -53,5 +59,6 @@ public class Main {
 			cmd=inpArr[1];
 			return cmd;
 		}
+		else return "FAILURE";
 	}
 }

@@ -3,7 +3,7 @@ package fixtures;
 import java.util.Arrays;
 
 public class Room extends Fixtures{
-	private Room[] exits;
+	
 
 	public Room() {
 		super();
@@ -13,36 +13,17 @@ public class Room extends Fixtures{
 	
 	public Room(String name, String shortDescription, String longDescription) {
 		super(name, shortDescription, longDescription);
-		this.exits = new Room[4]; // size is your choice
 	}
-	
-	// create a getter not just for all the exits, 
-	//but for a particular exit given a direction:
-	public Room[] getExits() {
-		return this.exits;
-	}
-		
-	public void setExits(Room[] exits) {
-		this.exits=exits;
-	}
-	public Room getExit(String direction) {
-		switch(direction) {
-		case "north":
-			return this.exits[0];
-		default:
-			return null;
-		}
-	}
+
+
 
 	@Override
 	public String toString() {
-		return "Room [name="
-				+super.getName()
-				+",shortDesc="
-				+super.getShortDescription()
-				+"longDesc="+super.getLongDescription()
-				+"exits" + Arrays.toString(exits) + "]";
+		return "Room [Name=" + getName() + "\n, ShortDescription=" + getShortDescription()
+				+ "\n, LongDescription=" + getLongDescription() + "\n" + "]";
 	}
+	
+	
 	
 	
 
